@@ -61,10 +61,11 @@ def on_click(square_name, button):
         button.config(state=tk.DISABLED)
     if total_moves >= 4:
         check_winner('X')
-    elif total_moves == 9:
+    if total_moves == 9 and game_is_over == False:
         print("game is a draw nobody wins")
+        game_is_over = True
         game_over()
-    else:
+    if game_is_over == False:
         ai_turn()
 
 
@@ -76,7 +77,9 @@ def ai_turn():
             "UL stands for upper left, MR stands for middle right, M stands for middle, ML stands for middle left, "
             "LR stands for lower right, LM stands for lower middle, and LL stands for lower left. "
             f"The current moves of the opponent are: {players_moves}. Your moves are: {ai_moves}. "
-            "Prioritize making a winning move. If no winning move is available, block the opponent from winning. "
+            "Prioritize making a winning move. If no winning move is available, block the opponent from winning."
+            "you cannot respond with a square that is already taken for example if player already has MR you cannot take it"
+            "you also cannot pick the same square twice"
             "Respond with only UR, UM, UL, MR, M, ML, LR, LM, or LL."
         )
 
