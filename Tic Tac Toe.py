@@ -86,7 +86,7 @@ def ai_turn():
 
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="gpt-4",
+            model="gpt-4o-2024-08-06",
             max_tokens=1,
             temperature=0
         )
